@@ -4,27 +4,58 @@ class Sorter {
   }
 
   add(element) {
-    // your implementation
+    let index=this.length;
+    this[index]=element;
   }
 
   at(index) {
-    // your implementation
+    return this[index];// your implementation
   }
 
   get length() {
-    // your implementation
+      let index=0;
+      while(this[index]!==undefined){
+        index++;
+    }
+    return index;
   }
 
   toArray() {
-    // your implementation
+      let Arr=[];
+      let index=0;
+      let length=this.length;
+      while(index<length){
+          Arr[index]=this[index];
+          index++;
+    }
+    return Arr;
   }
 
-  sort(indices) {
+sort(indices) {
+      let swap=true;
+      let length=indices.length;
+      indices.sort();
+
+      while(swap===true){
+          swap=false;
+          for(let i=0; i<length-1;i++){
+          if(this.SortingAlgrothm(this[indices[i]],this[indices[i+1]])>0){
+              let a=this[indices[i+1]];
+              this[indices[i+1]]=this[indices[i]];
+              this[indices[i]]=a;
+              swap=true;
+          }
+          }
+      }
     // your implementation
   }
 
   setComparator(compareFunction) {
-    // your implementation
+    this.SortingAlgrothm=compareFunction;
+  }
+
+  SortingAlgrothm(a, b){
+      return a-b;
   }
 }
 
